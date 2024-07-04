@@ -1,14 +1,18 @@
-FROM python:3.11-alpine
+FROM python:3.12-alpine
 # The latest alpine images don't have some tools like (`git` and `bash`).
 # Adding git, bash and openssh to the image
 RUN apk update && apk upgrade && \
     apk add --no-cache bash git openssh nodejs npm
+# Install grunt first
+RUN npm install -g grunt-cli
+RUN pip install --upgrade pip pip-tools
 RUN mkdir /app
 
 RUN git clone https://github.com/OnroerendErfgoed/atramhasis /app/atramhasis
 WORKDIR /app/atramhasis
+
 # Install dependencies
-RUN pip install -r requirements-dev.txt
+RUN pip-sync requirements-dev.txt
 # Install packages in dev mode
 RUN pip install -e .
 # create or update database
@@ -18,8 +22,6 @@ COPY config.ini config.ini
 #RUN initialize_atramhasis_db config.ini
 # compile the Message Catalog Files
 RUN python setup.py compile_catalog
-#
-RUN npm install -g grunt-cli
 # install js dependencies for public site using npm
 RUN cd atramhasis/static && npm install
 # install js dependencies for admin using npm
