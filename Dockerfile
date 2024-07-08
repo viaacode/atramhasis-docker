@@ -14,20 +14,19 @@ WORKDIR /app/atramhasis
 # Install dependencies
 RUN pip-sync requirements-dev.txt
 # Install packages in dev mode
-RUN pip install -e .
+#RUN pip install -e .
+# install js dependencies for public site using npm
+RUN cd atramhasis/static && npm install
+RUN cd atramhasis/static/admin && npm install 
+RUN cd atramhasis/static/admin && grunt -v build
 # create or update database
 RUN alembic upgrade head
 # insert sample data
 COPY config.ini config.ini
 #RUN initialize_atramhasis_db config.ini
-# compile the Message Catalog Files
-RUN python setup.py compile_catalog
-# install js dependencies for public site using npm
-RUN cd atramhasis/static && npm install
-# install js dependencies for admin using npm
-RUN cd atramhasis/static/admin && npm install 
-#&& grunt -v build
-# 
+RUN pybabel compile --directory 'atramhasis/locale' --domain atramhasis --statistics true
+
+# Add SKOS data
 RUN mkdir /data
 COPY data.csv /data
 RUN  <<EOF
@@ -37,6 +36,6 @@ do
     import_file datamodels/$skos_file $namespace
 done < /data/data.csv
 EOF
-#&& grunt -v build
+
 EXPOSE 6543
 CMD ["pserve", "config.ini"] 
