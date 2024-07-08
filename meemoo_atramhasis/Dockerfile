@@ -27,4 +27,4 @@ done < /data/data.csv
 EOF
 
 EXPOSE 6543
-CMD ["pserve", "config.ini"] 
+CMD ["pserve", "development.ini"] 
