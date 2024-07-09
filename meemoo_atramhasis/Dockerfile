@@ -22,7 +22,7 @@ while IFS="," read -r skos_file namespace
 do
     filename="${skos_file##*/}"
     wget https://raw.githubusercontent.com/viaacode/datamodels/main/$skos_file
-    import_file $filename $namespace
+    import_file $filename $namespace --to sqlite:///meemoo_atramhasis.sqlite
     rm $filename
 done < /data/data.csv
 EOF
