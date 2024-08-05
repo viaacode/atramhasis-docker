@@ -8,7 +8,7 @@ COPY . /app/atramhasis
 
 WORKDIR /app/atramhasis
 
-RUN pip install atramhasis==2.1.0a2
+RUN pip install atramhasis==2.1.1
 RUN pip install -e .[dev]
 
 # create or update database
