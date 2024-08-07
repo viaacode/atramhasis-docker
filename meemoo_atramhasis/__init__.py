@@ -24,5 +24,20 @@ def main(global_config, **settings):
         # Set up atramhasis db
         config.include("atramhasis:data.db")
 
+        config.override_asset(
+            to_override='atramhasis:templates/welcome.jinja2',
+            override_with='meemoo_atramhasis:templates/welcome.jinja2'
+        )
+
+        config.override_asset(
+            to_override='atramhasis:templates/conceptscheme.jinja2',
+            override_with='meemoo_atramhasis:templates/conceptscheme.jinja2'
+        )
+
+        config.override_asset(
+            to_override='atramhasis:templates/conceptschemes_overview.jinja2',
+            override_with='meemoo_atramhasis:templates/conceptschemes_overview.jinja2'
+        )
+
         config.scan()
         return config.make_wsgi_app()
