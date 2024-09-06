@@ -9,6 +9,11 @@ COPY . /app/atramhasis
 WORKDIR /app/atramhasis
 
 RUN pip install atramhasis==2.1.1
+
+# Generate custom
+RUN npm install -g sass
+RUN cd ./meemoo_atramhasis/static && sass -I /usr/local/lib/python3.12/site-packages/atramhasis/static/scss -I /usr/local/lib/python3.12/site-packages/atramhasis/static/node_modules/foundation-sites/scss -I /usr/local/lib/python3.12/site-packages/atramhasis/static/node_modules/font-awesome/scss --embed-source-map --quiet scss/scaf_app.scss stylesheets/scaf_app.css
+
 RUN pip install -e .[dev]
 
 # create or update database

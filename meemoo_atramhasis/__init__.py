@@ -39,5 +39,10 @@ def main(global_config, **settings):
             override_with='meemoo_atramhasis:templates/conceptschemes_overview.jinja2'
         )
 
+        config.override_asset(
+            to_override="atramhasis:static/css/app.css",
+            override_with="meemoo_atramhasis:static/stylesheets/scaf_app.css",
+        )
+
         config.scan()
         return config.make_wsgi_app()

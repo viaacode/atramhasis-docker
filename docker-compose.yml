@@ -1,0 +1,6 @@
+services:
+  atramhasis-meemoo:
+    build: .
+    image: atramhasis-meemoo
+    ports:
+      - "6543:6543"
