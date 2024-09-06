@@ -41,7 +41,7 @@ def main(global_config, **settings):
 
         config.override_asset(
             to_override="atramhasis:static/css/app.css",
-            override_with="meemoo_atramhasis:static/stylesheets/scaf_app.css",
+            override_with="meemoo_atramhasis:static/css/app.css",
         )
 
         config.scan()

@@ -1,0 +1,43 @@
+@import "atramhasis/atramhasis-settings";
+/* The custom css is used */
+@font-face {
+  font-family: SofiaPro;
+  font-weight: 400;
+  src: url(/fonts/3AFA78_2_0.eot);
+  src: url(/fonts/3AFA78_2_0.eot?#iefix) format("embedded-opentype"),
+    url(/fonts/3AFA78_2_0.woff2) format("woff2"),
+    url(/fonts/3AFA78_2_0.woff) format("woff"),
+    url(/fonts/3AFA78_2_0.ttf) format("truetype");
+}
+@font-face {
+  font-family: SofiaPro;
+  font-style: italic;
+  font-weight: 400;
+  src: url(/fonts/3AFA78_3_0.eot);
+  src: url(/fonts/3AFA78_3_0.eot?#iefix) format("embedded-opentype"),
+    url(/fonts/3AFA78_3_0.woff2) format("woff2"),
+    url(/fonts/3AFA78_3_0.woff) format("woff"),
+    url(/fonts/3AFA78_3_0.ttf) format("truetype");
+}
+@font-face {
+  font-family: SofiaPro;
+  font-weight: 700;
+  src: url(/fonts/3AFA78_0_0.eot);
+  src: url(/fonts/3AFA78_0_0.eot?#iefix) format("embedded-opentype"),
+    url(/fonts/3AFA78_0_0.woff2) format("woff2"),
+    url(/fonts/3AFA78_0_0.woff) format("woff"),
+    url(/fonts/3AFA78_0_0.ttf) format("truetype");
+}
+@font-face {
+  font-family: SofiaPro;
+  font-style: italic;
+  font-weight: 700;
+  src: url(/fonts/3AFA78_1_0.eot);
+  src: url(/fonts/3AFA78_1_0.eot?#iefix) format("embedded-opentype"),
+    url(/fonts/3AFA78_1_0.woff2) format("woff2"),
+    url(/fonts/3AFA78_1_0.woff) format("woff"),
+    url(/fonts/3AFA78_1_0.ttf) format("truetype");
+}
+$paragraph-font-size: 1.125rem;
+$body-bg: rgb(230, 230, 230);
+$body-font-family: "SofiaPro", Helvetica, Arial, sans-serif;
