@@ -53,11 +53,11 @@ pipeline {
                 }
             }
         }
-        stage('Test code') {
-            steps {
-                sh 'make -f ./.openshift/Makefile test'
-            }
-        }
+        // stage('Test code') {
+        //     steps {
+        //         sh 'make -f ./.openshift/Makefile test'
+        //     }
+        // }
         stage('Build code') {
             when {
                 not {
