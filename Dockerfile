@@ -1,4 +1,5 @@
 FROM python:3.12-alpine
+ARG branch=main
 # The latest alpine images don't have some tools like (`git` and `bash`).
 # Adding bash and openssh to the image
 RUN apk update && apk upgrade && \
@@ -23,7 +24,6 @@ RUN alembic upgrade head
 RUN mkdir /data
 COPY data.csv /data
 RUN  <<EOF
-branch=main
 while IFS="," read -r skos_file namespace
 do
     filename="${skos_file##*/}"
