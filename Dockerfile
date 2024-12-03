@@ -29,7 +29,7 @@ EXPOSE 6543
 
 RUN addgroup --system appgroup && adduser --system appuser --ingroup appgroup
 
-RUN chown -R appuser:appgroup /app/atramhasis &&  chown -R appuser:appgroup /home/appuser/.local/
+RUN chown -R appuser:appgroup /app/atramhasis
 
 USER appuser
 
