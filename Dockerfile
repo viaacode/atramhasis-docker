@@ -26,4 +26,11 @@ COPY data.csv /data
 RUN bash load.sh
 
 EXPOSE 6543
+
+RUN addgroup --system appgroup && adduser --system appuser --ingroup appgroup
+
+RUN chown -R appuser:appgroup /app/atramhasis &&  chown -R appuser:appgroup /home/appuser/.local/
+
+USER appuser
+
 CMD ["pserve", "development.ini"] 
