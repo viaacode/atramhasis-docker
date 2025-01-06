@@ -27,7 +27,7 @@ RUN bash load.sh
 
 EXPOSE 6543
 
-RUN addgroup --system appgroup && adduser --system appuser --ingroup appgroup
+RUN addgroup --system appgroup --gid 1001 && adduser -u 1000 --system appuser --ingroup appgroup
 
 RUN chown -R appuser:appgroup /app/atramhasis
 
