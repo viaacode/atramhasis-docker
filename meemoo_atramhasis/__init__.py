@@ -24,6 +24,8 @@ def main(global_config, **settings):
         # Set up atramhasis db
         config.include("atramhasis:data.db")
 
+        config.add_static_view(name="fonts",path='meemoo_atramhasis:static/fonts')
+
         config.override_asset(
             to_override='atramhasis:templates/welcome.jinja2',
             override_with='meemoo_atramhasis:templates/welcome.jinja2'

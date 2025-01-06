@@ -1,4 +1,5 @@
 FROM python:3.12-alpine
+ARG branch=main
 # The latest alpine images don't have some tools like (`git` and `bash`).
 # Adding bash and openssh to the image
 RUN apk update && apk upgrade && \
@@ -22,16 +23,14 @@ RUN alembic upgrade head
 # Add SKOS data
 RUN mkdir /data
 COPY data.csv /data
-RUN  <<EOF
-branch=main
-while IFS="," read -r skos_file namespace
-do
-    filename="${skos_file##*/}"
-    wget https://raw.githubusercontent.com/viaacode/datamodels/$branch/$skos_file
-    import_file $filename $namespace/%s --to sqlite:///meemoo_atramhasis.sqlite --conceptscheme-uri $namespace
-    rm $filename
-done < /data/data.csv
-EOF
+RUN bash load.sh
 
 EXPOSE 6543
+
+RUN addgroup --system appgroup && adduser --system appuser --ingroup appgroup
+
+RUN chown -R appuser:appgroup /app/atramhasis
+
+USER appuser
+
 CMD ["pserve", "development.ini"] 
